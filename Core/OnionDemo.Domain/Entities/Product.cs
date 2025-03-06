@@ -25,5 +25,4 @@ public class Product : EntityBase
 
     public Brand Brand { get; set; }
     public ICollection<Category> Categories { get; set; }
-
 }
