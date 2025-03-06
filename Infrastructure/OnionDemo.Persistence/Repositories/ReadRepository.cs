@@ -2,9 +2,7 @@
 using Microsoft.EntityFrameworkCore.Query;
 using OnionDemo.Application.Interfaces.Repositories;
 using OnionDemo.Domain.Common;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Threading.Tasks;
 
 namespace OnionDemo.Persistence.Repositories;
 
