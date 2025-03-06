@@ -10,4 +10,10 @@
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1production_1json__JsonSchema="https://json.schemastore.org/azure-iot-edgehub-deployment-1.2.json" /></VisualStudio></ProjectExtensions>
+
 </Project>
