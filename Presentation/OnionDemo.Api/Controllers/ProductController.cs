@@ -1,5 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using OnionDemo.Application.Features.Products.Command.CreateProduct;
+using OnionDemo.Application.Features.Products.Command.DeleteProduct;
+using OnionDemo.Application.Features.Products.Command.UpdateProduct;
 using OnionDemo.Application.Features.Products.Queries.GetAllProducts;
 
 namespace OnionDemo.Api.Controllers;
@@ -20,5 +23,27 @@ public class ProductController : ControllerBase
     {
         var response = await _mediator.Send(new GetAllProductsQueryRequest());
         return Ok(response);
+    }
+
+
+    [HttpPost]
+    public async Task<IActionResult> CreateProduct([FromBody] CreateProductCommandRequest request)
+    {
+        await _mediator.Send(request);
+        return Ok();
+    }
+
+    [HttpPut]
+    public async Task<IActionResult> UpdateProduct([FromBody] UpdateProductCommandRequest request)
+    {
+        await _mediator.Send(request);
+        return Ok();
+    }
+
+    [HttpDelete]
+    public async Task<IActionResult> CreateProduct([FromBody] DeleteProductCommandRequest request)
+    {
+        await _mediator.Send(request);
+        return Ok();
     }
 }
