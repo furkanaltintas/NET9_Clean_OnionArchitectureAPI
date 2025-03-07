@@ -41,7 +41,7 @@ public class ProductController : ControllerBase
     }
 
     [HttpDelete]
-    public async Task<IActionResult> CreateProduct([FromBody] DeleteProductCommandRequest request)
+    public async Task<IActionResult> DeleteProduct([FromBody] DeleteProductCommandRequest request)
     {
         await _mediator.Send(request);
         return Ok();
