@@ -1,4 +1,5 @@
 using OnionDemo.Application.Exceptions;
+using OnionDemo.Infrastructure;
 using OnionDemo.Persistence;
 using OnionDemo.Application;
 using OnionDemo.Mapper;
@@ -19,6 +20,7 @@ builder.Configuration
     .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
 
 builder.Services.AddPersistence(builder.Configuration);
+builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApplication();
 builder.Services.AddCustomMapper();
 
