@@ -9,7 +9,7 @@ public class Product : EntityBase
 
     }
 
-    public Product(int brandId, string title, string description, decimal price, decimal discount)
+    public Product(string title, string description, decimal price, decimal discount, int brandId)
     {
         BrandId = brandId;
         Title = title;
