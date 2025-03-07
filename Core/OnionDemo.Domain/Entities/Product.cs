@@ -6,11 +6,12 @@ public class Product : EntityBase
 {
     public Product()
     {
-        
+
     }
 
-    public Product(string title, string description, decimal price, decimal discount)
+    public Product(int brandId, string title, string description, decimal price, decimal discount)
     {
+        BrandId = brandId;
         Title = title;
         Description = description;
         Price = price;
@@ -24,5 +25,5 @@ public class Product : EntityBase
     public decimal Discount { get; set; }
 
     public Brand Brand { get; set; }
-    public ICollection<Category> Categories { get; set; }
+    public ICollection<ProductCategory> ProductCategories { get; set; }
 }
