@@ -4,8 +4,6 @@ using Microsoft.Extensions.DependencyInjection;
 using OnionDemo.Application.Bases;
 using OnionDemo.Application.Beheviors;
 using OnionDemo.Application.Exceptions;
-using OnionDemo.Application.Features.Products.Command;
-using OnionDemo.Application.Features.Products.Rules;
 using System.Globalization;
 using System.Reflection;
 
