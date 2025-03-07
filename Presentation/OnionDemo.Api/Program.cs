@@ -1,3 +1,4 @@
+using OnionDemo.Application.Exceptions;
 using OnionDemo.Persistence;
 using OnionDemo.Application;
 using OnionDemo.Mapper;
@@ -29,6 +30,7 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
+app.ConfigureExceptionHandlingMiddleware();
 app.UseAuthorization();
 
 app.MapControllers();
