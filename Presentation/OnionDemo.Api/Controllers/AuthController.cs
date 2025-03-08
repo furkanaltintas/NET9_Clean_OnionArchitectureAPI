@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using OnionDemo.Application.Features.Auth.Command.Login;
 using OnionDemo.Application.Features.Auth.Command.Register;
 
 namespace OnionDemo.Api.Controllers
@@ -21,6 +22,13 @@ namespace OnionDemo.Api.Controllers
         {
             await _mediator.Send(request);
             return Created();
+        }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login(LoginCommandRequest request)
+        {
+            var response = await _mediator.Send(request);
+            return Ok(response);
         }
     }
 }
