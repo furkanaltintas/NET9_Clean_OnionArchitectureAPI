@@ -10,11 +10,11 @@ namespace OnionDemo.Api.Controllers;
 
 [Route("api/[controller]/[action]")]
 [ApiController]
-public class ProductController : ControllerBase
+public class ProductsController : ControllerBase
 {
     private readonly IMediator _mediator;
 
-    public ProductController(IMediator mediator)
+    public ProductsController(IMediator mediator)
     {
         _mediator = mediator;
     }
