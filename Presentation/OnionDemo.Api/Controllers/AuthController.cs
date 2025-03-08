@@ -46,7 +46,7 @@ public class AuthController : ControllerBase
         await _mediator.Send(new RevokeAllCommandRequest());
         return Ok();
     }
-    
+
     [HttpPost("refresh-token")]
     public async Task<IActionResult> RefreshToken(RefreshTokenCommandRequest request)
     {

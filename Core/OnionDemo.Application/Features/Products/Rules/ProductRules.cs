@@ -1,5 +1,4 @@
 ﻿using OnionDemo.Application.Bases;
-using OnionDemo.Application.Features.Products.Exceptions;
 using OnionDemo.Domain.Entities;
 
 namespace OnionDemo.Application.Features.Products.Rules;

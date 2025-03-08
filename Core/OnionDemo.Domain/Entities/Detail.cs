@@ -6,7 +6,7 @@ public class Detail : EntityBase
 {
     public Detail()
     {
-        
+
     }
     public Detail(int categoryId, string title, string description)
     {
