@@ -17,9 +17,6 @@ public class AuthRules : BaseRules
         if (user is null || !checkPassword) throw new EmailOrPasswordInvalidException();
         return Task.CompletedTask;
     }
-<<<<<<< Updated upstream
-=======
-
     public Task RefreshTokenShouldNotBeExpired(User user)
     {
         if (user.RefreshTokenExpiryTime <= DateTime.Now)
@@ -27,10 +24,9 @@ public class AuthRules : BaseRules
         return Task.CompletedTask;
     }
 
-    internal async Task EmailAddressShouldBeValid(User? user)
+    public Task EmailAddressShouldBeValid(User? user)
     {
         if (user is null) throw new EmailAddressShouldBeValidException();
         return Task.CompletedTask;
     }
->>>>>>> Stashed changes
 }
