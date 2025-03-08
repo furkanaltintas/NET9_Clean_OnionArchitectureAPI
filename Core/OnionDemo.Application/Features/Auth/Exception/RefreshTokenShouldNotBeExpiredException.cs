@@ -1,5 +1,6 @@
 ﻿using OnionDemo.Application.Bases;
 
+
 namespace OnionDemo.Application.Features.Auth.Exception;
 
 public class RefreshTokenShouldNotBeExpiredException : BaseExceptions

@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using OnionDemo.Application.Features.Auth.Command.Login;
+using OnionDemo.Application.Features.Auth.Command.RefreshToken;
 using OnionDemo.Application.Features.Auth.Command.Register;
 using OnionDemo.Application.Features.Auth.Command.Revoke;
 using OnionDemo.Application.Features.Auth.Command.RevokeAll;
@@ -44,5 +45,12 @@ public class AuthController : ControllerBase
     {
         await _mediator.Send(new RevokeAllCommandRequest());
         return Ok();
+    }
+    
+    [HttpPost("refresh-token")]
+    public async Task<IActionResult> RefreshToken(RefreshTokenCommandRequest request)
+    {
+        var response = await _mediator.Send(request);
+        return Ok(response);
     }
 }
