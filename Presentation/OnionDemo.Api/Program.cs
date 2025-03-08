@@ -1,9 +1,9 @@
+using Microsoft.OpenApi.Models;
+using OnionDemo.Application;
 using OnionDemo.Application.Exceptions;
 using OnionDemo.Infrastructure;
-using OnionDemo.Persistence;
-using OnionDemo.Application;
 using OnionDemo.Mapper;
-using Microsoft.OpenApi.Models;
+using OnionDemo.Persistence;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,10 +11,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-//builder.Services.AddOpenApi();
+builder.Services.AddOpenApi();
 
-builder.Services.AddHttpContextAccessor();
-builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 var env = builder.Environment;
 builder.Configuration
@@ -60,15 +58,7 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1");
-    });
-
-
-    //app.MapOpenApi();
+    app.MapOpenApi();
 }
 
 app.ConfigureExceptionHandlingMiddleware();

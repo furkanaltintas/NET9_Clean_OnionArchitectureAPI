@@ -6,7 +6,7 @@ public class ProductCategory : IEntityBase
 {
     public ProductCategory()
     {
-        
+
     }
 
     public ProductCategory(int productId, int categoryId)

@@ -29,7 +29,7 @@ public class RefreshTokenCommandHandler : BaseHandler, IRequestHandler<RefreshTo
     {
         ClaimsPrincipal? principal = _tokenService.GetPrincipalFromExpiredToken(request.AccessToken);
         string email = principal.FindFirstValue(ClaimTypes.Email);
-        
+
         User user = await _userManager.FindByEmailAsync(email);
         IList<string> roles = await _userManager.GetRolesAsync(user);
 

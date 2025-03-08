@@ -6,7 +6,7 @@ public class Brand : EntityBase
 {
     public Brand()
     {
-        
+
     }
 
     public Brand(string name)

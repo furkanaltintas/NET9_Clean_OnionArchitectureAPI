@@ -33,9 +33,9 @@ public class RegisterCommandHandler : BaseHandler, IRequestHandler<RegisterComma
 
         IdentityResult result = await _userManager.CreateAsync(user, request.Password);
 
-        if(result.Succeeded)
+        if (result.Succeeded)
         {
-            if(!await _roleManager.RoleExistsAsync("user"))
+            if (!await _roleManager.RoleExistsAsync("user"))
                 await _roleManager.CreateAsync(new Role { Name = "user" });
 
             await _userManager.AddToRoleAsync(user, "user");

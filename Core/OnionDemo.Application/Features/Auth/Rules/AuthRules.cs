@@ -8,7 +8,7 @@ public class AuthRules : BaseRules
 {
     public Task UserShouldNotBeExist(User? user)
     {
-        if(user is not null) throw new UserAlreadyExistException();
+        if (user is not null) throw new UserAlreadyExistException();
         return Task.CompletedTask;
     }
 

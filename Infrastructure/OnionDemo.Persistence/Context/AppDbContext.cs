@@ -10,7 +10,7 @@ public class AppDbContext : IdentityDbContext<User, Role, Guid>
 {
     public AppDbContext()
     {
-        
+
     }
 
     public AppDbContext(DbContextOptions options) : base(options)
