@@ -5,6 +5,7 @@ using OnionDemo.Application.Interfaces.Tokens;
 using OnionDemo.Domain.Entities;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace OnionDemo.Infrastructure.Tokens;
@@ -41,18 +42,36 @@ public class TokenService : ITokenService
             signingCredentials: new(key, SecurityAlgorithms.HmacSha256)
         );
 
-        await  _userManager.AddClaimsAsync(user, claims);
-
+        await _userManager.AddClaimsAsync(user, claims);
         return token;
     }
 
     public string GenerateRefreshToken()
     {
-        throw new NotImplementedException();
+        var randomNumber = new byte[64];
+        using var rng = RandomNumberGenerator.Create();
+        rng.GetBytes(randomNumber);
+        return Convert.ToBase64String(randomNumber);
     }
 
-    public ClaimsPrincipal? GetPrincipalFromExpiredToken()
+    public ClaimsPrincipal? GetPrincipalFromExpiredToken(string? token)
     {
-        throw new NotImplementedException();
+        TokenValidationParameters tokenValidationParameters = new()
+        {
+            ValidateIssuer = false,
+            ValidateAudience = false,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_tokenSettings.SecretKey)),
+            ValidateLifetime = false
+        };
+
+        JwtSecurityTokenHandler tokenHandler = new();
+        var principal = tokenHandler.ValidateToken(token, tokenValidationParameters, out var securityToken);
+
+        if(
+            securityToken is not JwtSecurityToken jwtSecurityToken || 
+            !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase))
+            throw new SecurityTokenException("Token bulunamadı");
+
+        return principal;
     }
 }
