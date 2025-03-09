@@ -5,7 +5,7 @@ using OnionDemo.Application.Features.Brands.Queries.GetAllBrands;
 
 namespace OnionDemo.Api.Controllers;
 
-[Route("api/[controller]")]
+[Route("api/[controller]/[action]")]
 [ApiController]
 public class BrandsController : ControllerBase
 {
@@ -16,9 +16,10 @@ public class BrandsController : ControllerBase
         _mediator = mediator;
     }
 
-    public IActionResult GetAllBrands()
+    [HttpGet]
+    public async Task<IActionResult> GetAllBrands()
     {
-        var response = _mediator.Send(new GetAllBrandsQueryRequest());
+        var response = await _mediator.Send(new GetAllBrandsQueryRequest());
         return Ok(response);
     }
 
