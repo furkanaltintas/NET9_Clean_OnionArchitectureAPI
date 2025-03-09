@@ -30,6 +30,8 @@ public static class Registration
             opt.Password.RequireUppercase = false;
             opt.Password.RequireDigit = false;
             opt.SignIn.RequireConfirmedEmail = false;
-        }).AddRoles<Role>().AddEntityFrameworkStores<AppDbContext>();
+        })
+            .AddRoles<Role>()
+            .AddEntityFrameworkStores<AppDbContext>();
     }
 }

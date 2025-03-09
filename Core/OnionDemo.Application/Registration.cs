@@ -24,12 +24,13 @@ public static class Registration
         ValidatorOptions.Global.LanguageManager.Culture = new CultureInfo("tr-TR");
 
         services.AddTransient(typeof(IPipelineBehavior<,>), typeof(FluentValidationBehevior<,>));
+        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RedisCacheBehevior<,>));
     }
 
     private static IServiceCollection AddRulesFromAssemblyContaining(
         this IServiceCollection services, Assembly assembly, Type type)
     {
-        var types = assembly.GetTypes()
+        List<Type> types = assembly.GetTypes()
             .Where(t => t.IsSubclassOf(type) && type != t).ToList();
         foreach (var item in types)
             services.AddTransient(item);
