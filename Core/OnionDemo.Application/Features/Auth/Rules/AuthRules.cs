@@ -30,10 +30,4 @@ public class AuthRules : BaseRules
         if (user is null) throw new EmailAddressShouldBeValidException();
         return Task.CompletedTask;
     }
-
-    internal async Task EmailAddressShouldBeValid(User? user)
-    {
-        if (user is null) throw new EmailAddressShouldBeValidException();
-        return Task.CompletedTask;
-    }
 }

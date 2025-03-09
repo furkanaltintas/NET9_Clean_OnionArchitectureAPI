@@ -53,19 +53,4 @@ public class AuthController : ControllerBase
         var response = await _mediator.Send(request);
         return Ok(response);
     }
-
-    [HttpPost("revoke")]
-    public async Task<IActionResult> Revoke(RevokeCommandRequest request)
-    {
-        var response = await _mediator.Send(request);
-        return Ok(response);
-    }
-}
-
-    [HttpPost("revoke-all")]
-    public async Task<IActionResult> RevokeAll()
-    {
-        await _mediator.Send(new RevokeAllCommandRequest());
-        return Ok();
-    }
 }
